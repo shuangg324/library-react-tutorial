@@ -1,10 +1,15 @@
-
 import Nav from './components/Nav'
+import Landing from './components/Landing'
+import Highlights from './components/Highlights'
 
 
 
 export default function App() {
   return (
-    <div className="App"><Nav /></div>
+    <div className="App">
+      <Nav />
+      <Landing />
+      <Highlights />
+      </div>
   )
 }
