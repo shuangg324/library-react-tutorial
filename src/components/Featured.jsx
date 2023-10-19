@@ -1,24 +1,26 @@
-import React from 'react'
+import React from "react";
+import Book from "./ui/Book";
+import { books } from "../data";
 
 export default function Featured() {
+  function getFiveStarBooks() {
+    books.filter((book) => book.rating === 5).slice(0, 4);
+  }
   return (
     <section id="features">
-        <div className="container">
-            <div className="row">
-                <h2 className="section__title">
-                    Featured <span className="purple">Books</span>
-                </h2>
-                <div className="books">
-                    <div className="book">
-                        <a href="">
-                            <figure className="book__img--wrapper">
-                                <img src="https://covers.openlibrary.org/b/id/8091016-L.jpg" alt="" className="book__img" />
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-            </div>
+      <div className="container">
+        <div className="row">
+          <h2 className="section__title">
+            Featured <span className="purple">Books</span>
+          </h2>
+          <div className="books">
+            {books
+            .filter((book) => book.rating === 5)
+            .slice(0, 4)
+            .map(book => <Book book={book} key={book.id} />)}
+          </div>
         </div>
+      </div>
     </section>
-  )
+  );
 }
