@@ -16,7 +16,7 @@ export default function Book({ book }) {
       </div>
       <div className="book__ratings">
         {
-            
+            new Array(5).fill(0).map(() => <FontAwesomeIcon icon="star" key={index}/>)
         }
       </div>
       <div className="book__price">
