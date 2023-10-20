@@ -1,17 +1,17 @@
-import Nav from './components/Nav'
-import Landing from './components/Landing'
-import Highlights from './components/Highlights'
-import Featured from './components/Featured'
-
-
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <div className="App">
-      <Nav />
-      <Landing />
-      <Highlights />
-      <Featured />
+    <Router>
+      <div className="App">
+        <Route />
+        <Nav />
+        <Home />
+        <Footer />
       </div>
-  )
+    </Router>
+  );
 }
