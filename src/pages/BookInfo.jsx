@@ -1,13 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Rating from "../components/ui/Rating";
-import React from "react";
+import React, { useState } from "react";
 import Price from "../components/Price";
 import Book from "../components/ui/Book";
 import { Link, useParams } from "react-router-dom";
 
-export default function BookInfo({ books, addToCart }) {
+export default function BookInfo({ books, addToCart, cart }) {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id); //undefined if === cus comparing string and int.  add + to both sides to make them numbers
+
+  function addBookToCart(book) {
+    addToCart(book);
+  }
+
+  function bookExists() {
+    return cart.find((book) => +book.id === +id);
+  }
+
   return (
     <div id="books__body">
       <main id="books__main">
@@ -49,7 +58,15 @@ export default function BookInfo({ books, addToCart }) {
                     Porro magnam quam, ab architecto reprehenderit velit.
                   </p>
                 </div>
-                <button className="btn" onClick={() => addToCart(book)}>Add to Cart</button>
+                {bookExists() ? (
+                  <Link to={"/cart"} className="book__link">
+                  <button className="btn">Checkout</button>
+                  </Link>
+                ) : (
+                  <button className="btn" onClick={() => addBookToCart(book)}>
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -62,7 +79,7 @@ export default function BookInfo({ books, addToCart }) {
             <div className="books">
               {books
                 .filter((book) => book.rating === 5 && +book.id !== +id)
-                .slice(0,4)
+                .slice(0, 4)
                 .map((book) => (
                   <Book book={book} key={book.id} />
                 ))}
