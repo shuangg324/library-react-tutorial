@@ -44,7 +44,7 @@ export default function Cart({ cart, changeQuantity, removeItem }) {
                             ${(book.salePrice || book.originalPrice).toFixed(2)}
                           </span>
                           <button
-                            className="cart_book--remove"
+                            className="cart__book--remove"
                             onClick={() => removeItem(book)}
                           >
                             Remove
